@@ -2,7 +2,19 @@
 if (!defined('APP_INIT')) {
     die('Direct access not allowed.');
 }
+
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+if (isset($_GET['logout'])) {
+    session_destroy();
+    header('Location: ' . BASE_URL);
+    exit;
+}
+
 $base = rtrim(BASE_URL, '/');
+$isLoggedIn = isset($_SESSION['admin_logged_in']) && $_SESSION['admin_logged_in'] === true;
 ?>
 <!DOCTYPE html>
 <html lang="hr">
@@ -25,6 +37,10 @@ $base = rtrim(BASE_URL, '/');
             <a href="<?php echo $base; ?>/">Početna</a>
             <a href="<?php echo $base; ?>/index.php?page=manual">User manual</a>
             <a href="<?php echo $base; ?>/index.php?page=notifications">Obavijesti</a>
+            <?php if ($isLoggedIn): ?>
+                <a href="<?php echo $base; ?>/administrator/dashboard.php" style="background: #28a745; padding: 8px 15px; border-radius: 4px;">Admin</a>
+                <a href="<?php echo $base; ?>/?logout=1" style="background: #dc3545; padding: 8px 15px; border-radius: 4px;">Odjava</a>
+            <?php endif; ?>
         </nav>
     </div>
 </header>
