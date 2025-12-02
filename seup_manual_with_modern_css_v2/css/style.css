@@ -1,0 +1,451 @@
+/* ================================
+   SEUP MANUAL – MODERNI UI
+   ================================ */
+
+/* 1. OSNOVNE POSTAVKE I VARIJABLE */
+:root {
+    --bg-body: #050816;
+    --bg-elevated: #0f172a;
+    --bg-elevated-soft: #020617;
+    --accent: #22c55e;
+    --accent-soft: rgba(34, 197, 94, 0.1);
+    --accent-strong: #16a34a;
+    --accent-danger: #ef4444;
+    --accent-warning: #eab308;
+
+    --text-main: #e5e7eb;
+    --text-muted: #9ca3af;
+    --text-strong: #f9fafb;
+
+    --border-subtle: #1f2937;
+    --shadow-soft: 0 18px 40px rgba(15, 23, 42, 0.7);
+    --radius-lg: 16px;
+    --radius-xl: 20px;
+
+    --transition-fast: 0.15s ease-out;
+    --transition-med: 0.25s ease-out;
+
+    --container-width: 1200px;
+    --nav-height: 64px;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+/* 2. BODY & LAYOUT */
+
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: radial-gradient(circle at top, #1f2937 0, #020617 45%, #000 100%);
+    color: var(--text-main);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Utility container */
+.container {
+    width: 100%;
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 1.25rem;
+}
+
+/* 3. HEADER & NAVIGACIJA */
+
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    backdrop-filter: blur(18px);
+    background: linear-gradient(to bottom, rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.6));
+    border-bottom: 1px solid rgba(15, 23, 42, 0.9);
+}
+
+.site-header .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: var(--nav-height);
+}
+
+.site-title {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--text-strong);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Mali “badge” da izgleda kao app */
+.site-title::before {
+    content: "SEUP";
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    padding: 0.25rem 0.55rem;
+    border-radius: 999px;
+    background: radial-gradient(circle at 0 0, #22c55e, #22c55e20 55%, transparent 80%);
+    color: #bbf7d0;
+    border: 1px solid rgba(34, 197, 94, 0.4);
+}
+
+/* NAV */
+
+.main-nav {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.main-nav a {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.45rem 0.85rem;
+    border-radius: 999px;
+    text-decoration: none;
+    color: var(--text-muted);
+    border: 1px solid transparent;
+    background: transparent;
+    transition:
+        background var(--transition-fast),
+        color var(--transition-fast),
+        border-color var(--transition-fast),
+        transform var(--transition-fast);
+}
+
+.main-nav a::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 999px;
+    background: transparent;
+    transition: background var(--transition-fast), transform var(--transition-fast);
+}
+
+.main-nav a:hover {
+    color: var(--text-strong);
+    background: rgba(15, 23, 42, 0.9);
+    border-color: rgba(31, 41, 55, 0.9);
+    transform: translateY(-1px);
+}
+
+.main-nav a:hover::before {
+    background: var(--accent);
+    transform: scale(1.2);
+}
+
+/* “Primarni” link – obično Admin ili Manual */
+.main-nav a:last-child {
+    background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+    color: #022c22;
+    border-color: rgba(34, 197, 94, 0.9);
+    box-shadow: 0 10px 30px rgba(34, 197, 94, 0.4);
+    font-weight: 500;
+}
+
+.main-nav a:last-child:hover {
+    transform: translateY(-1px) scale(1.01);
+}
+
+/* 4. GLAVNI SADRŽAJ */
+
+.site-main {
+    flex: 1;
+    width: 100%;
+    padding-top: 1.75rem;
+    padding-bottom: 2.25rem;
+}
+
+/* Default tipografija stranice */
+.site-main h1,
+.site-main h2,
+.site-main h3 {
+    color: var(--text-strong);
+    letter-spacing: 0.02em;
+}
+
+.site-main h2 {
+    font-size: 1.6rem;
+    margin: 0 0 0.85rem;
+}
+
+.site-main p {
+    font-size: 0.97rem;
+    line-height: 1.7;
+    color: var(--text-main);
+    margin: 0 0 0.9rem;
+}
+
+/* 5. KARTICE (možeš ih koristiti ako kasnije želiš ljepši layout) */
+
+.card {
+    background: radial-gradient(circle at top left, #0b1120, #020617 55%);
+    border-radius: var(--radius-xl);
+    border: 1px solid rgba(31, 41, 55, 0.9);
+    box-shadow: var(--shadow-soft);
+    padding: 1.4rem 1.5rem;
+    margin-bottom: 1.25rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.card::before {
+    content: "";
+    position: absolute;
+    inset: -120px;
+    background:
+        radial-gradient(circle at 0 0, rgba(34, 197, 94, 0.03), transparent 60%),
+        radial-gradient(circle at 100% 0, rgba(59, 130, 246, 0.04), transparent 55%);
+    opacity: 0.9;
+    pointer-events: none;
+}
+
+.card > * {
+    position: relative;
+    z-index: 1;
+}
+
+.card-title {
+    font-size: 1.1rem;
+    margin: 0 0 0.5rem;
+    font-weight: 600;
+}
+
+.card-muted {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+}
+
+/* Grid za više kartica */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.1rem;
+}
+
+/* 6. BUTTONI (korisno za admin kasnije) */
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+    padding: 0.45rem 0.9rem;
+    border-radius: 999px;
+    border: 1px solid transparent;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+    transition:
+        background var(--transition-med),
+        border-color var(--transition-med),
+        color var(--transition-med),
+        transform var(--transition-fast),
+        box-shadow var(--transition-fast);
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+    color: #022c22;
+    border-color: rgba(34, 197, 94, 0.9);
+    box-shadow: 0 10px 25px rgba(34, 197, 94, 0.4);
+}
+
+.btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 16px 40px rgba(34, 197, 94, 0.55);
+}
+
+.btn-ghost {
+    background: transparent;
+    border-color: var(--border-subtle);
+    color: var(--text-main);
+}
+
+.btn-ghost:hover {
+    background: rgba(15, 23, 42, 0.9);
+}
+
+/* 7. TABLICE (za buduće liste obavijesti / verzija) */
+
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    border-radius: var(--radius-lg);
+    border: 1px solid rgba(31, 41, 55, 0.9);
+    background: #020617;
+    box-shadow: 0 16px 34px rgba(15, 23, 42, 0.9);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+thead {
+    background: radial-gradient(circle at top left, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.7));
+}
+
+th,
+td {
+    padding: 0.6rem 0.8rem;
+    text-align: left;
+    border-bottom: 1px solid rgba(31, 41, 55, 0.95);
+}
+
+th {
+    font-weight: 500;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    font-size: 0.72rem;
+    letter-spacing: 0.09em;
+}
+
+tbody tr:hover {
+    background: rgba(15, 23, 42, 0.9);
+}
+
+/* 8. CODE BLOCKS (za primjer naredbi, SQL, itd.) */
+
+code,
+pre {
+    font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+pre {
+    background: #020617;
+    border-radius: var(--radius-lg);
+    padding: 0.9rem 1rem;
+    border: 1px solid rgba(31, 41, 55, 0.9);
+    font-size: 0.83rem;
+    overflow-x: auto;
+    margin: 0.75rem 0 1rem;
+    position: relative;
+}
+
+pre::before {
+    content: "code";
+    position: absolute;
+    top: 0.4rem;
+    right: 0.7rem;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--text-muted);
+}
+
+/* Inline code */
+p code {
+    background: rgba(15, 23, 42, 0.9);
+    padding: 0.15rem 0.35rem;
+    border-radius: 0.35rem;
+    border: 1px solid rgba(31, 41, 55, 0.9);
+    font-size: 0.82em;
+}
+
+/* 9. ALERT / INFO BOXES */
+
+.alert {
+    padding: 0.75rem 0.9rem;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-subtle);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    background: rgba(15, 23, 42, 0.95);
+}
+
+.alert-info {
+    border-color: rgba(59, 130, 246, 0.9);
+    background: rgba(15, 23, 42, 0.96);
+}
+
+.alert-success {
+    border-color: rgba(34, 197, 94, 0.9);
+    background: rgba(22, 163, 74, 0.16);
+}
+
+.alert-warning {
+    border-color: rgba(234, 179, 8, 0.9);
+    background: rgba(234, 179, 8, 0.14);
+}
+
+.alert-danger {
+    border-color: rgba(248, 113, 113, 0.9);
+    background: rgba(127, 29, 29, 0.7);
+}
+
+/* 10. FOOTER */
+
+.site-footer {
+    border-top: 1px solid rgba(15, 23, 42, 0.95);
+    background: radial-gradient(circle at top, #020617, #000);
+    padding: 0.85rem 0;
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    margin-top: auto;
+}
+
+.site-footer .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+}
+
+/* 11. RESPONSIVE */
+
+@media (max-width: 768px) {
+    .site-header .container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+        padding: 0.55rem 1.25rem 0.7rem;
+        height: auto;
+    }
+
+    .main-nav {
+        flex-wrap: wrap;
+    }
+
+    .site-main {
+        padding-top: 1.2rem;
+        padding-bottom: 1.8rem;
+    }
+
+    .card-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .site-footer .container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-nav a {
+        padding: 0.35rem 0.7rem;
+        font-size: 0.8rem;
+    }
+
+    .site-title {
+        font-size: 1.05rem;
+    }
+}
