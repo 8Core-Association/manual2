@@ -69,7 +69,7 @@ $base = rtrim(BASE_URL, '/');
     <title><?php echo $post_id ? 'Uredi objavu' : 'Nova objava'; ?> - <?php echo SITE_NAME; ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="<?php echo $base; ?>/css/style.css">
-    <script src="https://cdn.tiny.cloud/1/YOUR_TINYMCE_API_KEY_HERE/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+    <script src="https://cdn.tiny.cloud/1/i36bor9xq5815no4er36rcf42p8s1dj7wray5r0pze7i0l7t/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
     <style>
         .admin-header {
             background: #343a40;
