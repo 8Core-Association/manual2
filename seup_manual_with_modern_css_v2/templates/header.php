@@ -25,7 +25,6 @@ $base = rtrim(BASE_URL, '/');
             <a href="<?php echo $base; ?>/">Početna</a>
             <a href="<?php echo $base; ?>/index.php?page=manual">User manual</a>
             <a href="<?php echo $base; ?>/index.php?page=notifications">Obavijesti</a>
-            <a href="<?php echo $base; ?>/admin/">Admin</a>
         </nav>
     </div>
 </header>
